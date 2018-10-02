@@ -16,28 +16,32 @@ export class CoreComponent implements OnInit {
   listType = ""
   keys = []
   lists = []
+  endpoint: string;
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.data.subscribe((data:{items: any, class: Itemize, listType: string, idName?: string }) => {
+    this.route.data.subscribe((data:{endpoint: string, items: any, class: Itemize, listType: string, idName?: string }) => {
       console.log(data)
       this.items = data.items
       this.modelClass = data.class
       this.listType = data.listType
       this.item = new this.modelClass().getModel()
       this.keys = this.modelClass.displayInfo()
-      this.idName = data.idName || "id"
+      this.idName = data.idName
+      this.endpoint = data.endpoint
     })
   }
   
   selection(ev: Itemize[]) {
-    this.lists = ev.map(val => {
-      return {
-        path: val[this.idName],
-        label: "form"
-      }
-    })
-    // this.router.navigate(['./' + ev.id], { relativeTo: this.route });
+    // this.lists = ev.map(val => {
+    //   return {
+    //     path: val[this.idName],
+    //     label: "form"
+    //   }
+    // })
+    console.log(ev[0][this.idName])
+    // this.router.navigate(['./' + this.endpoint + "/" + ev[0][this.idName]]);
+    this.router.navigate(['./' +  ev[0][this.idName]], {relativeTo: this.route});
   }
 
 }

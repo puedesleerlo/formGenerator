@@ -7,7 +7,7 @@
     [keys]="keys" 
     (selected)="selection($event)"></app-list>
     <div>
-        <nav mat-tab-nav-bar>
+        <!-- <nav mat-tab-nav-bar>
             <a mat-tab-link
                *ngFor="let link of lists"
                [routerLink]="link.path"
@@ -16,7 +16,7 @@
                <mat-icon>thumb_up</mat-icon>
               {{link.label}}
             </a>
-          </nav>
+          </nav> -->
           <router-outlet></router-outlet>
     </div>
 </div>

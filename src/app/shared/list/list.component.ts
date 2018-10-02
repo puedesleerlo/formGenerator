@@ -15,7 +15,7 @@ export class ListComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Output() selected = new EventEmitter<Object[]>();
   dataSource = new MatTableDataSource(this.items);
-  selection = new SelectionModel<any>(true, []);
+  selection = new SelectionModel<any>(false, []);
   
   constructor() { }
 

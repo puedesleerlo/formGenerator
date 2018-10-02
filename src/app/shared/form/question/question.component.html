@@ -5,6 +5,11 @@
         <input matInput [formControlName]="key"
         [id]="key" [type]="question.type" [value]="question.value" [placeholder]="question.label">
     </mat-form-field>
+
+    <div *ngSwitchCase="'hidden'">
+        <input [formControlName]="key"
+        [id]="key" [type]="question.type" [value]="question.value">
+    </div>
     
     <mat-form-field [formControlName]="key" *ngSwitchCase="'dropdown'" [id]="key"  >
       <mat-select [placeholder]="question.label">

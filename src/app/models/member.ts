@@ -2,7 +2,8 @@ import { Itemize } from "./itemize";
 import { Field } from "./model";
 
 export class Member extends Itemize{
-    name: String = ""
+    // name: String = ""
+    _id: String = ""
     firstName: String = ""
     lastName: String = ""
     about: String = ""
@@ -20,6 +21,18 @@ export class Member extends Itemize{
 
     static displayInfo(): string[] {
         return ["firstName", "lastName", "about"]
+    }
+    get __id(): Field {
+        return {
+            value: this._id,
+            validation: {
+                required: "hola _id"
+            },
+            controlType: "hidden",
+            type: "hidden",
+            key: "_id",
+            label: "_id"
+        }  
     }
     get _firstName(): Field {
         return {
